@@ -10,13 +10,6 @@ Library works on Unix platforms (e.g. Linux).
 
 Library was written for [VMU931](https://variense.com/product/vmu931/) and tested with [firmware 1.0.1](https://variense.com/downloads/)
 
-## Library design
-
-Goals:
-- retrieve readings history (not only the latest reading)
-- convinient interface for simple scenarios (e.g. grab readings in simple `while` loop)
-- usable in advanced scenarios (e.g. synchronous I/O multiplexing like `select`)
-
 ## Scope
 
 Library implements full functionality as defined in [VMU931 User Guide 1.3](http://variense.com/Docs/VMU931/VMU931_UserGuide.pdf) for [firmware 1.0.1](https://variense.com/downloads/).
@@ -27,6 +20,8 @@ This includes:
 - reading data from the device
 - selftest and calibration routines
 - retrieving device status
+
+Library was designed to retrieve readings history (not only the latest reading).
 
 ## Building Instructions
 
@@ -68,7 +63,7 @@ Run `vmu931-euler` with you device, e.g.:
 
 See examples directory for more complete and commented examples with error handling.
 
-```bash
+```C
 int ret;
 struct vmu *vmu=NULL;
 struct vmu_txyz euler_data[10];
