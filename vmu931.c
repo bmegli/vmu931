@@ -870,6 +870,12 @@ static int recv(struct vmu *v, int timeout_ms)
 	
 	if( (ret = read(v->fd, v->buffer+v->buffer_bytes, VMU_BUFFER_SIZE-v->buffer_bytes )) < 0 )
 		return VMU_ERROR;
+	if( ret == 0 )
+	{ //EOF - device unplugged
+		errno = ENODEV;
+		return VMU_ERROR;
+	}
+
 	v->buffer_bytes += ret;
 	
 	return VMU_OK;
