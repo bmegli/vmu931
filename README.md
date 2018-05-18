@@ -51,8 +51,6 @@ git clone https://github.com/bmegli/vmu931.git
 
 ### Building the examples
 
-TO DO (examples not included yet)
-
 ``` bash
 cd vmu931
 make all
@@ -60,11 +58,36 @@ make all
 
 ## Testing
 
-TO DO (examples not included yet)
+Run `vmu931-euler` with you device, e.g.: 
+
+```bash
+./vmu931-euler /dev/ttyACM0
+```
 
 ## Using
 
-TO DO 
+See examples directory for more complete and commented examples with error handling.
+
+```bash
+int ret;
+struct vmu *vmu=NULL;
+struct vmu_txyz euler_data[10];
+
+vmu=vmu_init("/dev/ttyACM0");
+vmu_stream(vmu, VMU_STREAM_EULER);
+
+while( (ret=vmu_euler(vmu, euler_data, EULER_DATA_SIZE)) != VMU_ERROR )
+{
+	for(int i=0; i<10 && i<ret;++i)
+		printf("t=%u x=%f y=%f z=%f\n",	euler_data[i].timestamp_ms,
+						euler_data[i].x,
+						euler_data[i].y,
+		 				euler_data[i].z);
+}
+
+vmu_close(vmu);
+
+```
 
 ### Compiling your code
 
