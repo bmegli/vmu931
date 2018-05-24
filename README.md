@@ -27,38 +27,31 @@ Library was designed to retrieve readings history (not only the latest reading).
 
 ## Building Instructions
 
-### Compilers and make
-
 ``` bash
-$ sudo apt-get update
-$ sudo apt-get install build-essential 
-```
+# compilers, make and git
+sudo apt-get update
+sudo apt-get install build-essential git
 
-### Getting git
-
-``` bash
-sudo apt-get install git
-```
-
-### Cloning the repository
-
-``` bash
+# clone the repository
 git clone https://github.com/bmegli/vmu931.git
-```
 
-### Building the examples
-
-``` bash
+# build the examples
 cd vmu931
 make all
 ```
 
 ## Testing
 
-Run `vmu931-euler` with you device, e.g.: 
+Run `vmu931-euler` with your device, e.g.: 
 
 ```bash
 ./vmu931-euler /dev/ttyACM0
+```
+
+Run `vmu931-read-all` with your device, e.g.: 
+
+```bash
+./vmu931-read-all /dev/ttyACM0
 ```
 
 ## Using
