@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	if(argc != 2)
 	{
 		usage(argv);
-		return EXIT_SUCCESS;
+		return 0;
 	}
 	
 	if( (vmu=vmu_init(tty_device)) == NULL)
@@ -61,11 +61,12 @@ int main(int argc, char **argv)
 	if( vmu_stream(vmu, VMU_STREAM_EULER) == VMU_ERROR )
 	{
 		perror("failed to stream euler data");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 		
 	while( (ret=vmu_euler(vmu, euler_data, EULER_DATA_SIZE)) != VMU_ERROR )
 	{
+		//ret greter than EULER_DATA_SIZE indicates there is more data pending without blocking 
 		for(int i=0; i<EULER_DATA_SIZE && i<ret;++i)
 			printf("t=%u x=%f y=%f z=%f\n", euler_data[i].timestamp_ms, euler_data[i].x, euler_data[i].y, euler_data[i].z);
 		
@@ -81,6 +82,8 @@ int main(int argc, char **argv)
 		printf("success reading from VMU931, bye...\n");
 	
 	vmu_close(vmu);
+	
+	return 0;
 }
 
 void usage(char **argv)
