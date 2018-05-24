@@ -63,6 +63,8 @@ Run `vmu931-euler` with you device, e.g.:
 
 See examples directory for more complete and commented examples with error handling.
 
+### Single stream (e.g. euler)
+
 ```C
 int ret;
 struct vmu *vmu = NULL;
@@ -83,6 +85,53 @@ while( (ret = vmu_euler(vmu, euler_data, EULER_DATA_SIZE) ) != VMU_ERROR )
 
 vmu_close(vmu);
 
+```
+
+### Multiple streams (e.g. euler, magnetometer, accelerometer)
+
+```C
+struct vmu *vmu=NULL;
+struct vmu_txyz euler_data[10];
+struct vmu_txyz mag_data[10];
+struct vmu_txyz accel_data[10];
+
+struct vmu_data data={0};
+struct vmu_size size={0};
+
+size.accel = size.mag = size.euler = 10;	
+
+data.euler = euler_data;
+data.mag = mag_data;
+data.accel = accel_data;
+data.size = size;
+
+int ret;
+
+vmu = vmu_init("/dev/ttyACM0");
+vmu_stream(vmu, VMU_STREAM_EULER | VMU_STREAM_MAG | VMU_STREAM_ACCEL);
+
+while( (ret=vmu_read_all(vmu, &data)) != VMU_ERROR )
+{
+   for(int i=0;i<data.size.euler;++i)
+      printf("[euler] t=%u x=%f y=%f z=%f\n", data.euler[i].timestamp_ms,
+                                              data.euler[i].x,
+                                              data.euler[i].y,
+                                              data.euler[i].z);
+
+   for(int i=0;i<data.size.mag;++i)
+      printf("[mag] t=%u x=%f y=%f z=%f\n", data.mag[i].timestamp_ms,
+                                            data.mag[i].x,
+                                            data.mag[i].y,
+                                            data.mag[i].z);
+
+   for(int i=0;i<data.size.accel;++i)
+      printf("[accel] t=%u x=%f y=%f z=%f\n", data.accel[i].timestamp_ms,
+                                              data.accel[i].x,
+                                              data.accel[i].y,
+                                              data.accel[i].z);
+			
+   data.size=size;
+}
 ```
 
 ### Compiling your code
