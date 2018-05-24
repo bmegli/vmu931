@@ -105,12 +105,10 @@ data.mag = mag_data;
 data.accel = accel_data;
 data.size = size;
 
-int ret;
-
 vmu = vmu_init("/dev/ttyACM0");
 vmu_stream(vmu, VMU_STREAM_EULER | VMU_STREAM_MAG | VMU_STREAM_ACCEL);
 
-while( (ret=vmu_read_all(vmu, &data)) != VMU_ERROR )
+while( vmu_read_all(vmu, &data) != VMU_ERROR )
 {
    for(int i=0;i<data.size.euler;++i)
       printf("[euler] t=%u x=%f y=%f z=%f\n", data.euler[i].timestamp_ms,
