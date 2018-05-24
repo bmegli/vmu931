@@ -14,12 +14,14 @@ Library was written for [VMU931](https://variense.com/product/vmu931/) and teste
 
 Library implements full functionality as defined in [VMU931 User Guide 1.3](http://variense.com/Docs/VMU931/VMU931_UserGuide.pdf) for [firmware 1.0.1](https://variense.com/downloads/).
 
-This includes:
-- enabling/disabling sensor streams
-- setting resolution for gyroscope and accelerometer
-- reading data from the device
-- selftest and calibration routines
-- retrieving device status
+| Functionality                      | Library functions                                                                      |
+| -----------------------------------|----------------------------------------------------------------------------------------|
+| init and cleanup                   | `vmu_init`, `vmu_close`                                                                |
+| enabling/disabling sensor streams  | `vmu_stream`                                                                           |
+| setting resolutions                | `vmu_resolution`                                                                       |
+| reading data from the device       | `vmu_accel`, `vmu_gyro`, `vmu_mag`, `vmu_euler`, `vmu_quat`, `vmu_head`, `vmu_read_all`|
+| selftest and calibration routines  | `vmu_selftest`, `vmu_calibrate`                                                        |
+| device status                      | `vmu_status`                                                                           |
 
 Library was designed to retrieve readings history (not only the latest reading).
 
