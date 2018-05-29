@@ -25,6 +25,8 @@ Library implements full functionality as defined in [VMU931 User Guide 1.3](http
 
 Library was designed to retrieve readings history (not only the latest reading).
 
+See also library [documentation](https://bmegli.github.io/vmu931/vmu931_8h.html).
+
 ## Building Instructions
 
 ``` bash
@@ -57,6 +59,8 @@ Run `vmu931-read-all` with your device, e.g.:
 ## Using
 
 See examples directory for more complete and commented examples with error handling.
+
+See also library [documentation](https://bmegli.github.io/vmu931/vmu931_8h.html).
 
 ### Single stream (e.g. euler)
 
