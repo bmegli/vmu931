@@ -9,6 +9,7 @@ branches:
 # Install dependencies
 addons:
   apt:
+    update: true
     packages:
       - doxygen
 
