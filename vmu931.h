@@ -205,7 +205,12 @@ enum vmu_retval_enum {
 struct vmu *vmu_init(const char *tty);
 
 /**
- * @brief free internal library data
+ * @brief free library resources
+ *
+ * Frees memory and restores terminal settings.
+ *
+ * May be safely called with NULL argument.
+ *
  * @param v pointer to internal library data
  * @return 
  * - VMU_OK on success
