@@ -25,6 +25,10 @@
 #ifndef VMU931_H_
 #define VMU931_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 /** \addtogroup interface Public interface
@@ -399,4 +403,8 @@ int vmu_status(struct vmu *v, struct vmu_status *data);
 
 /** @}*/
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif //VMU931_H_
