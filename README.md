@@ -129,6 +129,19 @@ while( vmu_read_all(vmu, &data) != VMU_ERROR )
 			
    data.size=size;
 }
+
+vmu_close(vmu);
+```
+
+### Calibration
+
+```C
+struct vmu *vmu = NULL;
+struct vmu_text text;
+
+vmu = vmu_init("/dev/ttyACM0");
+vmu_calibrate(vmu, &text);
+vmu_close(vmu);
 ```
 
 ### Compiling your code

@@ -1,5 +1,5 @@
 VMU931 = vmu931.o
-EXAMPLES = vmu931-euler vmu931-read-all
+EXAMPLES = vmu931-euler vmu931-read-all vmu931-calibrate
 CC = gcc
 CXX = g++
 DEBUG = 
@@ -25,6 +25,12 @@ vmu931-read-all : vmu931.o vmu931-read-all.o
 
 vmu931-read-all.o : vmu931.h examples/vmu931-read-all.c
 	$(CC) $(CFLAGS) examples/vmu931-read-all.c
+
+vmu931-calibrate : vmu931.o vmu931-calibrate.o
+	$(CC) $(LFLAGS) vmu931.o vmu931-calibrate.o -o vmu931-calibrate
+
+vmu931-calibrate.o : vmu931.h examples/vmu931-calibrate.c
+	$(CC) $(CFLAGS) examples/vmu931-calibrate.c
 		
 clean:
 	\rm -f *.o examples/*.o $(VMU931) $(EXAMPLES)
