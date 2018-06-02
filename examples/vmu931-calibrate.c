@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 		perror("Additional error information: ");
 	}
 	
-	printf("Messages returned by the device:\n %s", text.text);	
+	printf("Messages returned by the device:\n%s", text.text);	
 	
 	vmu_close(vmu);
 	
