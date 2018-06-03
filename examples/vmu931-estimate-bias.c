@@ -129,10 +129,16 @@ int main(int argc, char **argv)
 	printf("-bias on X=%f, Y=%f, Z=%f\n", 	euler_last.x-euler_first.x,
 											euler_last.y-euler_first.y,
 											euler_last.z-euler_first.z);
-	printf("-bias per hour on X=%f, Y=%f, Z=%f\n", 	(euler_last.x-euler_first.x)*per_hour_factor,
+	printf("-bias per hour on X=%f, Y=%f, Z=%f\n\n", 	(euler_last.x-euler_first.x)*per_hour_factor,
 													(euler_last.y-euler_first.y)*per_hour_factor,
 													(euler_last.z-euler_first.z)*per_hour_factor);
 
+	printf("Notes:\n");
+	printf("- the calculation is simple: end value - start value\n");
+	printf("- calculation doesn't take into account \"wrap around\" (e.g. -180, 180 for Z axis)! \n");
+	printf("- the result in only correct if no \"wrap around\" happened \n");
+	printf("- in case you need more insight redirect to file and plot the result\n");
+		
 	vmu_close(vmu);
 	
 	return 0;
