@@ -1,5 +1,5 @@
 VMU931 = vmu931.o
-EXAMPLES = vmu931-euler vmu931-read-all vmu931-calibrate
+EXAMPLES = vmu931-euler vmu931-read-all vmu931-calibrate vmu931-estimate-bias
 CC = gcc
 CXX = g++
 DEBUG = 
@@ -31,6 +31,13 @@ vmu931-calibrate : vmu931.o vmu931-calibrate.o
 
 vmu931-calibrate.o : vmu931.h examples/vmu931-calibrate.c
 	$(CC) $(CFLAGS) examples/vmu931-calibrate.c
+
+vmu931-estimate-bias : vmu931.o vmu931-estimate-bias.o
+	$(CC) $(LFLAGS) vmu931.o vmu931-estimate-bias.o -o vmu931-estimate-bias
+
+vmu931-estimate-bias.o : vmu931.h examples/vmu931-estimate-bias.c
+	$(CC) $(CFLAGS) examples/vmu931-estimate-bias.c
+
 		
 clean:
 	\rm -f *.o examples/*.o $(VMU931) $(EXAMPLES)
