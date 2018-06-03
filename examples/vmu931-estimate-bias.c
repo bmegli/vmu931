@@ -75,6 +75,7 @@ int main(int argc, char **argv)
 	if( vmu_stream(vmu, VMU_STREAM_EULER) == VMU_ERROR )
 	{
 		perror("failed to stream euler data");
+		vmu_close(vmu);
 		return 1;
 	}
 
