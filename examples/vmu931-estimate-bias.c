@@ -136,8 +136,8 @@ int main(int argc, char **argv)
 	printf("Notes:\n");
 	printf("- the calculation is simple: end value - start value\n");
 	printf("- calculation doesn't take into account \"wrap around\"!\n"
-			"(e.g. -180, 180 for Z axis)\n");
-	printf("- the result in only correct if no \"wrap around\" happened \n");
+			"  (e.g. -180, 180 for Z axis)\n");
+	printf("- the result is only correct if no \"wrap around\" happened \n");
 	printf("- in case you need more insight redirect to file and plot the result\n");
 		
 	vmu_close(vmu);
