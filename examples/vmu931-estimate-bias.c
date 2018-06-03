@@ -70,14 +70,16 @@ int main(int argc, char **argv)
 		return 1;
 	}	
 	
+	time_t start_time=time(NULL);
+
 	if( vmu_stream(vmu, VMU_STREAM_EULER) == VMU_ERROR )
 	{
 		perror("failed to stream euler data");
 		return 1;
 	}
-	
-	time_t start_time=time(NULL);
-	
+
+	printf("timestamp ms;X;Y;Z\n\n");
+		
 	printf("--------------- start of .csv data ----------------\n");
 	
 	while( (ret=vmu_euler(vmu, euler_data, EULER_DATA_SIZE)) != VMU_ERROR )
