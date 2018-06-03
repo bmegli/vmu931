@@ -56,7 +56,7 @@ Run `vmu931-read-all` with your device, e.g.:
 ./vmu931-read-all /dev/ttyACM0
 ```
 
-Optionally run 'vmu931-calibrate' with your device, e.g.:
+Optionally run `vmu931-calibrate` with your device, e.g.:
 
 ```bash
 ./vmu931-calibrate /dev/ttyACM0
