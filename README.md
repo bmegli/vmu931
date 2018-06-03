@@ -56,6 +56,12 @@ Run `vmu931-read-all` with your device, e.g.:
 ./vmu931-read-all /dev/ttyACM0
 ```
 
+Run `vmu931-estimate-bias` with your device and number of seconds, e.g.:
+
+```bash
+./vmu931-estimate-bias /dev/ttyACM0 10
+```
+
 Optionally run `vmu931-calibrate` with your device, e.g.:
 
 ```bash
