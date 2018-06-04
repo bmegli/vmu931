@@ -2,6 +2,8 @@
 
 This is C library for communication with Variense [VMU931](https://variense.com/product/vmu931/) inertial measurment unit.
 
+![vmu931wc_iso_new-180x180](https://user-images.githubusercontent.com/9095769/40945881-d8b454ee-685a-11e8-8c75-adc94676d35e.jpg)
+
 ## Platforms 
 
 Library works on Unix platforms (e.g. Linux).
