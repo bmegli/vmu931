@@ -78,10 +78,10 @@ int main(int argc, char **argv)
 		vmu_close(vmu);
 		return 1;
 	}
-
-	printf("timestamp ms;X;Y;Z\n\n");
 		
 	printf("--------------- start of .csv data ----------------\n");
+
+	printf("t;x;y;z\n");
 	
 	while( (ret=vmu_euler(vmu, euler_data, EULER_DATA_SIZE)) != VMU_ERROR )
 	{
