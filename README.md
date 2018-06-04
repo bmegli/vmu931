@@ -62,11 +62,23 @@ Run `vmu931-estimate-bias` with your device and number of seconds, e.g.:
 ./vmu931-estimate-bias /dev/ttyACM0 10
 ```
 
-Optionally run `vmu931-calibrate` with your device, e.g.:
+## Calibration
+
+There are two calibration procedures:
+- the one triggered with the calibration command (X and Y axes)
+- magnetometer calibration (essential for Z axis)
+
+To trigger calibration command you can use `vmu931-calibrate` example:
 
 ```bash
 ./vmu931-calibrate /dev/ttyACM0
 ```
+
+Magnetometer calibration is not documented in the VMU931 User Guide 1.3. 
+
+While powering up the sensor move it around in multiple orientations until the Euler angles indicates 0 degrees while the sensor has its Y axis pointing North. As of firmware 1.01 this has to be repeated every time you power on the sensor.
+
+More details on [wiki](https://github.com/bmegli/vmu931/wiki/VMU931-bias-drift).
 
 ## Using
 
@@ -74,7 +86,7 @@ See examples directory for more complete examples with error handling.
 
 Library [documentation](https://bmegli.github.io/vmu931/vmu931_8h.html).
 
-### Calibration
+### Calibration command
 
 ```C
 struct vmu *vmu = NULL;
