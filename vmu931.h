@@ -376,12 +376,18 @@ int vmu_selftest(struct vmu *v, struct vmu_text *data);
 /**
  * @brief Command device to perform calibration.
  * 
- * Blocks for around 4 seconds while device performs selftest.
+ * Blocks for around 4 seconds while device performs calibration.
  * All textual data output by the device is concatenated in \p data argument.
  * All non-textual data is discarded during the process.
- * 
  * The device needs to remain still on a flat surface with its Z-axis pointing upward during the process.
+ * You don't have to repeat this procedure every time you power on the sensor.
  * 
+ * Note - there is undocummented (VMU User Guide 1.3) magnetometer calibration procedure.
+ * Magnetometer calibration is essential to reduce drift on Z (heading) axis.
+ * While powering up the sensor move it around in multiple orientations.
+ * Do it until the Euler angles indicates 0 degrees while the sensor has its Y axis pointing North.
+ * As of firmware 1.01 this has to be repeated every time you power on the sensor.
+ *  
  * @param v pointer to internal library data
  * @param data argument filled with textual data
  * @return 
