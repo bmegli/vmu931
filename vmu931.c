@@ -907,6 +907,11 @@ static int send(struct vmu *v, const char *command)
 	return VMU_OK;
 }
 
+int vmu_fd(struct vmu *v)
+{
+	return v->fd;
+}
+
 /* Generic Helpers */
 
 static void sleep_ms(int ms)

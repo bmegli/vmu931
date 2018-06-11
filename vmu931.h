@@ -412,7 +412,20 @@ int vmu_calibrate(struct vmu *v, struct vmu_text *data);
  */
 int vmu_status(struct vmu *v, struct vmu_status *data);
 
+/**
+ * @brief Get file descriptor used for serial communication with the device
+ *
+ * Library user should not directly read or write from or to descriptor.
+ * This function is intended to be used in synchronous I/O multiplexing (select, poll).
+ *
+ * @param v pointer to internal library data
+ * @return file descriptor
+ */
+int vmu_fd(struct vmu *v);
+
 /** @}*/
+
+
 
 #ifdef __cplusplus
 }
