@@ -194,3 +194,19 @@ This is similiar to LGPL but more permissive:
 - unlike LGPL you may compile it statically with your code
 
 Like in LGPL, if you modify this library, you have to make your changes available. Making a github fork of the library with your changes satisfies those requirements perfectly.
+
+## Additional information
+
+### Building with CMake
+
+Alternatively build examples and library with CMake
+
+``` bash
+sudo apt-get install cmake
+cd vmu931
+mkdir build
+cd build
+cmake ..
+make
+```
+
